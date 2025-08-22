@@ -1,5 +1,4 @@
-#!/bin/bash
-
+#!/run/current-system/sw/bin/bash
 output=""
 while read -r ip iface ip_addr; do
     if [ -n "$ip_addr" ]; then
