@@ -3,15 +3,6 @@
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-
-ZSH_THEME="gnzh"
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
