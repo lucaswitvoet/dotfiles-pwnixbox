@@ -40,4 +40,4 @@ alias clipboard="xclip -seli clipboard"
 alias nano='vim'
 
 # Created by `pipx` on 2024-05-08 13:35:18
-export PATH="$PATH:/home/lucas.witvoet/.local/bin"
+export PATH="$PATH:$HOME/.local/bin"
