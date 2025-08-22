@@ -3,10 +3,17 @@
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-# Omz Configuration
 ZSH_THEME="gnzh"
-zstyle ':omz:update' mode reminder# User configuration
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+plugins=(git tmux zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
 
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -33,4 +40,4 @@ alias clipboard="xclip -seli clipboard"
 alias nano='vim'
 
 # Created by `pipx` on 2024-05-08 13:35:18
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/home/lucas.witvoet/.local/bin"
