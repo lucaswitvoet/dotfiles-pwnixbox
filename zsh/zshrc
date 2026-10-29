@@ -3,16 +3,11 @@
 if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
-# Path to your oh-my-zsh installation.
-
-ZSH_THEME="gnzh"
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-source $ZSH/oh-my-zsh.sh
+# oh-my-zsh (theme, plugins, custom dir) is loaded by NixOS from /etc/zshrc
 
 # User configuration
 
-if [ -x /usr/bin/dircolors ]; then
+if command -v dircolors >/dev/null; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
@@ -26,8 +21,6 @@ fi
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-export TERM=xterm-256color
-export TERM=xterm-256color
 
 # some more ls aliases
 alias ll='ls -alF'
