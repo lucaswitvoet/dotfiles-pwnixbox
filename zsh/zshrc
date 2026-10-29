@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]]; then
+# Auto-attach on SSH, except when the box SSHes into itself (127.x): $TMUX isn't
+# forwarded over SSH, so that would attach ssh_tmux inside itself and loop forever
+if [[ $- =~ i ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_TTY" ]] && [[ $SSH_CLIENT != 127.* ]]; then
   tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
 fi
 # oh-my-zsh (theme, plugins, custom dir) is loaded by NixOS from /etc/zshrc
